@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+<p>User info</p>
+ <%= attachment_image_tag user, :profile_image %>
+ <%= current_user.name %>
+ <%= current_user.introduction %>
+ <%= link_to "Edit", edit_user_path(user.id) %>
+<% end %>

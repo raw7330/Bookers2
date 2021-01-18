@@ -4,18 +4,42 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/dbd121b6c7.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <% if user_signed_in? %>
+
      <li>
-       <%= link_to 'Books', new_book_path %>
+       <%= link_to 'Bookers', root_path %>
+     </li>
+
+     <li>
+       <a href="/users/<%= current_user.id %> ">
+       <i class="fas fa-home">Home</i>
+       </a>
+       <!--<%= link_to 'home', user_path(current_user.id) %>-->
+     </li>
+
+     <li>
+       <a href="/users">
+       <i class="fas fa-users">Users</i>
+       </a>
+       <!--<%= link_to 'user', users_path %>-->
      </li>
      <li>
-       <%= link_to "log out", destroy_user_session_path, method: :delete %>
+       <a href="/books">
+       <i class="fas fa-book-open">Books</i>
+       </a>
+       <!--<%= link_to 'Books', books_path %>-->
+     </li>
+     <li>
+       <a href="/users/sign_out">
+       <i class="fas fa-sign-out-alt">logout</i>
+       </a>
+       <!--<%= link_to "log out", destroy_user_session_path, method: :delete %>-->
      </li>
     <% else %>
      <li>

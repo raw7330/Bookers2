@@ -1,0 +1,13 @@
+<div class="book-body">
+   <p><%= @book.title %></p>
+   <p><%= @book.body %></p>
+
+   <% if @book.user == current_user %>
+    <%= link_to "Edit", edit_book_path(@book) %>
+  <% end %>
+
+   <% if @book.user == current_user %>
+    <%= link_to "Destroy", book_path(@book), method: :delete %>
+  <% end %>
+
+</div>
