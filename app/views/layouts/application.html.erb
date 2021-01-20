@@ -10,45 +10,80 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+         <a class="navbar-brand" href="/">
+           <span>Bookers</span>
+         </a>
+         <button class="navbar-toggller" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+           <ul class="navbar-nav ml-auto">
+           <% if user_signed_in? %>
 
-     <li>
-       <%= link_to 'Bookers', root_path %>
-     </li>
+            <li>
+             <%= link_to user_path(current_user.id) do %>
+             <i class="fas fa-home">Home</i>
+             <% end %>
+            </li>
+             <li>
+               <%= link_to users_path do %>
+               <i class="fas fa-users">Users</i>
+               <% end %>
+             </li>
+             <li>
+               <%= link_to books_path do %>
+               <i class="fas fa-book-open">Books</i>
+               <% end %>
+             </li>
+             <li>
+               <%= link_to destroy_user_session_path, method: :delete do %>
+               <i class="fas fa-sign-out-alt">logout</i>
+               <% end %>
+             </li>
+            <% else %>
+             <li>
+               <%= link_to new_user_session_path do %>
+               <i class="fas fa-home">Home</i>
+               <% end %>
+             </li>
+             <li>
+              <%= link_to home_about_path do %>
+              <i class="fas fa-bolt">about</i>
+              <% end %>
+             </li>
+             <li>
+               <%= link_to new_user_registration_path do %>
+               <i class="fas fa-user-plus">sign up</i>
+               <% end %>
+             </li>
+             <li>
+               <%= link_to new_user_session_path do %>
+                <i class="fas fa-sign-in-alt">login</i>
+               <% end %>
+             </li>
+             <% end %>
+            </ul>
+           </div>
+          </div>
+        </nav>
+      </header>
+      <%= yield %>
 
-     <li>
-       <a href="/users/<%= current_user.id %> ">
-       <i class="fas fa-home">Home</i>
-       </a>
-       <!--<%= link_to 'home', user_path(current_user.id) %>-->
-     </li>
 
-     <li>
-       <a href="/users">
-       <i class="fas fa-users">Users</i>
-       </a>
-       <!--<%= link_to 'user', users_path %>-->
-     </li>
-     <li>
-       <a href="/books">
-       <i class="fas fa-book-open">Books</i>
-       </a>
-       <!--<%= link_to 'Books', books_path %>-->
-     </li>
-     <li>
-       <a href="/users/sign_out">
-       <i class="fas fa-sign-out-alt">logout</i>
-       </a>
-       <!--<%= link_to "log out", destroy_user_session_path, method: :delete %>-->
-     </li>
-    <% else %>
-     <li>
-       <%= link_to "Log in", new_user_session_path %>
-     </li>
-     <li>
-       <%= link_to "Sign Up", new_user_registration_path %>
-     </li>
-    <% end %>
-    <%= yield %>
-  </body>
+
+
+
+  <footer>
+      <div class="container mt-5">
+          <div class="row">
+              <div class="mx-auto">
+                  <P>CopyRight Inflatop.inc</P>
+              </div>
+          </div>
+      </div>
+  </footer>
+ </body>
 </html>

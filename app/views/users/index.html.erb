@@ -1,7 +1,24 @@
+<%= render 'users/list', user: @user %>
+
+<%= render 'books/list', book: @book %>
+
+<div class="col-md-8 offset-md-1">
 <% @users.each do |user| %>
-<p>User info</p>
- <%= attachment_image_tag user, :profile_image %>
- <%= current_user.name %>
- <%= current_user.introduction %>
- <%= link_to "Edit", edit_user_path(user.id) %>
+<h2>User info</h2>
+<table class-"table">
+ <thead>
+  <tr>
+   <th>image</th>
+   <th>name</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><%= attachment_image_tag user, :profile_image %></td>
+   <td><%= current_user.name %></td>
+   <td><%= link_to "show", user_path(current_user.id) %></td>
+  </tr>
+ </tbody>
+</table>
 <% end %>
+</div>

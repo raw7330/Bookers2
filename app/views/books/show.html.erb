@@ -1,13 +1,41 @@
-<div class="book-body">
-   <p><%= @book.title %></p>
-   <p><%= @book.body %></p>
+<%=flash[:notice] %>
 
-   <% if @book.user == current_user %>
-    <%= link_to "Edit", edit_book_path(@book) %>
-  <% end %>
+<div class="container px-5 px-s-0">
+ <div class="row">
+  <div class="col-md-3">
+  <%= render 'users/list', user: @user %>
+  <%= render 'books/list', book: @book %>
+  </div>
 
-   <% if @book.user == current_user %>
-    <%= link_to "Destroy", book_path(@book), method: :delete %>
-  <% end %>
+<div class="col-md-8 offset-md-1">
+ <h4>Books detail</h4>
+ <% @books.each do |book| %>
+  <table>
+      <thead>
+       <tr>
+        <th><%= attachment_image_tag book.user, :profile_image %><br>
+            <%= link_to user_path(current_user.id) do %>
+            <%= current_user.name %>
+            <% end %>
+        </th>
+        <th><%= link_to book_path(book.id) do %>
+            <%= book.title %>
+            <% end %>
+        </th>
+        <th><%= book.body %></th>
+        <th><% if @book.user == current_user %>
+            <%= link_to "Edit", edit_book_path(@book) %>
+            <% end %>
+        </th>
+        <th><% if @book.user == current_user %>
+            <%= link_to "Destroy", book_path(@book), method: :delete %>
+            <% end %>
+        </th>
+       </tr>
+      </thead>
+  </table>
+<% end %>
+</div>
 
+</div>
 </div>

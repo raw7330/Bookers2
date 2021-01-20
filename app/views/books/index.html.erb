@@ -1,12 +1,19 @@
+<%=flash[:notice] %>
+
+<%= render 'users/list', user: @user %>
+
+<%= render 'books/list', book: @book %>
+
 <h4>Books</h4>
   <% @books.each do |book| %>
-  <table>
+  <table class="table table-striped">
       <thead>
        <tr>
-        <th><%= attachment_image_tag @user, :profile_image %></th>
-        <%= link_to book_path(book.id) do %>
-        <th>Title:<%= book.title %></th>
+        <th><%= attachment_image_tag book.user, :profile_image %></th>
+        <th><%= link_to book_path(book.id) do %>
+        Title:<%= book.title %>
         <% end %>
+        </th>
         <th>Opinion:<%= book.body %></th>
        </tr>
       </thead>
