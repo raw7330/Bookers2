@@ -1,11 +1,8 @@
 <%=flash[:notice] %>
 
-<div class="container px-5 px-s-0">
- <div class="row">
-  <div class="col-md-3">
   <%= render 'users/list', user: @user %>
   <%= render 'books/list', book: @book %>
-  </div>
+  
 
   <div class-"col-md-8 offset-md-1">
   <h4>Books</h4>

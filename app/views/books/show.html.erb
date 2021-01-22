@@ -1,11 +1,8 @@
 <%=flash[:notice] %>
 
-<div class="container px-5 px-s-0">
- <div class="row">
-  <div class="col-md-3">
   <%= render 'users/list', user: @user %>
   <%= render 'books/list', book: @book %>
-  </div>
+  
 
 <div class="col-md-8 offset-md-1">
  <h4>Books detail</h4>
@@ -14,8 +11,8 @@
       <thead>
        <tr>
         <th><%= attachment_image_tag book.user, :profile_image %><br>
-            <%= link_to user_path(current_user.id) do %>
-            <%= current_user.name %>
+            <%= link_to users_path(@user) do %>
+            <%= @user.name %>
             <% end %>
         </th>
         <th><%= link_to book_path(book.id) do %>
@@ -28,7 +25,7 @@
             <% end %>
         </th>
         <th><% if @book.user == current_user %>
-            <%= link_to "Destroy", book_path(@book), method: :delete %>
+            <%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "are you sure？"} %>
             <% end %>
         </th>
        </tr>

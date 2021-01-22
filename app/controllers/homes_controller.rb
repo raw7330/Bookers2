@@ -4,6 +4,7 @@ class HomesController < ApplicationController
   end
 
   def about
+    redirect_to home_about_path
   end
 
 end
