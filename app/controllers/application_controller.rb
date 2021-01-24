@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
-
+before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
     flash[:notice] = 'Signed in successfully.'
@@ -11,6 +10,7 @@ before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_
     flash[:notice] = 'Signed out successfully.'
     root_path
   end
+
 
   protected
 
