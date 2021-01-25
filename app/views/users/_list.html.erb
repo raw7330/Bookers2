@@ -1,8 +1,9 @@
-<div class="container px-5 px-s-0">
+<div class="container px-5 px-sm-0">
  <div class="row">
   <div class="col-md-3">
-      <h2>User info</h2>
-       <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+
+    <h2>User info</h2>
+       <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %>
        <table class="table">
            <tbody>
                <tr>
