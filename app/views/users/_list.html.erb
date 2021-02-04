@@ -14,6 +14,12 @@
                   <th>introduction</th>
                   <th><%= user.introduction %></th>
                </tr>
+               <tr>
+                  <th><%= "フォロー数: #{user.follower.count}" %></th>
+               </tr>
+               <tr>
+                  <th><%= "フォロワー数: #{user.followed.count}" %></th>
+               </tr>
             </tbody>
         </table>
         <div class="row">
@@ -22,4 +28,11 @@
          <i class="fas fa-user-cog"></i>
          <% end %>
          </a>
+         <% unless user == current_user %>
+          <% if current_user.following?(user) %>
+          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+          <% else %>
+          <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+          <% end %>
+         <% end %>
         </div>
