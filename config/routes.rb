@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/search'
   devise_for :users
 
   resources :books
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
 
   post 'follow/:id' => 'relationships#follow',as:'follow'
   post 'unfollow/:id' => 'relationships#unfollow',as:'anfollow'
+  
+  get'/search' => 'search#search'
 
   resources :users do
     get :followings, on: :member

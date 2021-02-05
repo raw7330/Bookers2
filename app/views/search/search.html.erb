@@ -1,0 +1,8 @@
+<h1>検索結果</h1>
+ <% @datas.each do |data| %>
+ <tr>
+   <td><%= attachment_image_tag data, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %></td>
+   <td><%= data %></td>
+   <td><%= data %></td>
+ </tr>
+ <% end %>
