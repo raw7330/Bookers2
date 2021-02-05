@@ -1,0 +1,21 @@
+<h2>フォロワー一覧</h2>
+<% @user.follower_user.where.not(id: current_user.id).each do |user| %>
+<table class="table">
+  <thead>
+   <tr>
+    <th>image</th>
+    <th>name</th>
+    <th></th>
+    <th></th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %></td>
+    <td><%= user.name %></td>
+    <td><%= "フォロー数: #{user.follower.count}" %></td>
+    <td><%= "フォロワー数: #{user.followed.count}" %></td>
+   </tr>
+  </tbody>
+</table>
+<% end %>

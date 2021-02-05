@@ -5,7 +5,7 @@
 <div class="col-md-8 offset-md-1">
 <h2>User info</h2>
 <% @users.each do |user| %>
-<table class-"table">
+<table class="table">
  <thead>
   <tr>
    <th>image</th>
@@ -18,12 +18,14 @@
   <tr>
    <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %></td>
    <td><%= user.name %></td>
+   <td><%= "フォロー数: #{user.follower.count}" %></td>
+   <td><%= "フォロワー数: #{user.followed.count}" %></td>
    <td>
-    <% unless @user == current_user %>
-     <% if current_user.following?(@user) %>
-     <%= link_to 'フォロー外す', book_unfollow_path(@user.id), method: :POST %>
+    <% unless user == current_user %>
+     <% if current_user.following?(user) %>
+      <%= link_to 'フォロー外す', anfollow_path(user.id), method: :POST %>
      <% else %>
-     <%= link_to 'フォローする', book_follow_path(@user.id), method: :POST %>
+      <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
      <% end %>
     <% end %>
    </td>
